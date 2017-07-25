@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>Street Fighter V Character Finder</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<h2>Survey Questions</h2>
+		<hr>
+		<h3><strong>About You</strong></h3>
+		<h4>Name (Required)</h4>
+		<input type="text" name="" id="name" class="form-control" required >
+		<h4>Link to Photo Image (Required)</h4>
+		<input type="text" name="" id="photo" class="form-control" required >
+    <h4>Are you looking for a male fighter, female fighter, or either?</h4>
+    <select class='chosen-select' id='genderPref'>
+      <option value=""></option>
+      <option value="male">male</option>
+      <option value="female">female</option>
+      <option value="either">It does not matter</option>
+    </select>
+		<hr>
+
+    <div id='questions'></div>
+
+		<br>
+
+		<!-- Submit Button also triggers modal-->
+		<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" data-toggle="modal" data-target="#myModal">Submit</button>
+    <!-- Modal -->
+    <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Your Best Match</h4>
+          </div>
+          <div class="modal-body" >
+            <h5 id='match-name'></h5>
+            <div id='match-img'></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+		<hr>
+    <footer class="footer">
+      <div class="container">
+          <p><a href="/api/friends" target="_blank">API Character List</a> | <a href="https://github.com/chulinguy/FriendFinder" target="_blank">GitHub Repo</a></p>
+      </div>
+    </footer>
+	</div>
+
+  <script type="text/javascript">
+    //
+    var questions = [{
+      question: 'How important is having a lot of power? (More power allows you to deal more damage to your opoonents)'
+    },{
+      question: 'How important is having a large health pool? (Large health pool allows you to take more damage before opponent K.O. you)'
+    },{
+      question: 'How important is having good mobility? (Good mobility allows you to close in or back away quickly)'
+    },{
+      question: 'How important is having comeback capabiltiy? (some characters can deal damage in an explosive fashion by spending resources, which allows them to win from a health point deficit)'
+    },{
+      question: 'How important is a character\'s \'wall-carry\' ability? (characters with good wall-carry can quickly corner the opponent and apply pressure)'
+    },{
+      question: 'How important is having good range on your punchs and kicks? (Longer punches and kicks allow you to quickly attack or punish opponents from a far)'
+    },{
+      question: 'How important is having a good throw attack? (Throw attacks allow you to punish passive opponents.'
+    },{
+      question: 'How important is having projectile attacks? (Projectiles allow you to attack opponent at range)'
+    },{
+      question: 'How important is having a good \'Dragon Punch\' to you? (Dragon punch attacks have invicinsibility that offers a way to get out of troublesome situation; it can also be used as an anti-air attack)'
+    },{
+      question: 'How important is having a unique fighting style?'
+    }]
+    //render questions
+    questions.forEach((v,i) => {
+      var $newDiv = $('<div>').attr('id', `qDiv-${i+1}`);
+      var $newQuestion = $('<h4>').text(v.question);
+      var longStr = `<select data-placeholder="" class="chosen-select" id="q${i+1}">`;
+      longStr += '<option value=""></option>';
+      longStr += '<option value="1">1 (Irrelevant)</option>'
+      longStr += '<option value="2">2</option>'
+      longStr += '<option value="3">3</option>'
+      longStr += '<option value="4">4</option>'
+      longStr += '<option value="5">5 (Critically important)</option></select>'
+      $newDiv.append($newQuestion);
+      $newDiv.append(longStr);
+      $('#questions').append($newDiv)
+    })
+
+    // onclick hanlder
+    $("#submit").on("click", function(){
+    	// Check if each fied has been selected
+    	function validateAll() {
+		    var goNoGo = true;
+        $('.form-control').each(function() {
+          if ( $(this).val() === '' )
+            goNoGo = false;
+        });
+        $('.chosen-select').each(function() {
+
+          if( $(this).val() === "")
+            goNoGo = false
+        })
+        return goNoGo;
+		  }
+
+      // If all fields are filled
+      if (validateAll()){
+        var userData = {
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          preference: $('#genderPref').val(),
+          scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
+        }
+        $.post(window.location.origin + "/api/friends", userData, (data) => {
+          $("#match-name").text(data.name);
+          console.log(data)
+          $('#match-img').append(`<img src="${data.photo}">`);
+
+          // Show the modal with the best match 
+          $("#my-modal").modal('toggle')
+
+        });
+      } else {
+        alert("Please fill out all fields before hitting the submit button!");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Cammy",
+    "photo": "https://vignette2.wikia.nocookie.net/streetfighter/images/2/22/Cammyclean.png/revision/latest/scale-to-width-down/350?cb=20160604034552",
+    "scores": [3,1,5,4,3,3,1,1,3,2],
+    "gender": "female"
+  },
+   {
+    "name": "Chun-Li",
+    "photo": "https://vignette4.wikia.nocookie.net/streetfighter/images/f/fd/Chun-liclean.png/revision/latest/scale-to-width-down/350?cb=20160604034820",
+    "scores": [2,2,4,2,2,4,2,2,3,3],
+    "gender": "female"
+  },
+   {
+    "name": "R. Mika",
+    "photo":"https://vignette3.wikia.nocookie.net/streetfighter/images/6/68/R._Mikaclean.png/revision/latest/scale-to-width-down/350?cb=20160604042724",
+    "scores": [3,3,2,4,3,1,4,1,1,5],
+    "gender": "female"
+  },
+   {
+    "name": "Ibuki",
+    "photo": "https://vignette3.wikia.nocookie.net/streetfighter/images/2/21/Ibukiclean.png/revision/latest/scale-to-width-down/332?cb=20160604035322",
+    "scores": [2,2,4,5,2,2,2,3,5,3],
+    "gender": "female"
+  },
+   {
+    "name": "Laura",
+    "photo": "https://vignette3.wikia.nocookie.net/streetfighter/images/9/9e/Lauraclean.png/revision/latest/scale-to-width-down/350?cb=20160604041502",
+    "scores": [3,3,4,2,4,1,5,2,1,1],
+    "gender": "female"
+  },
+   {
+    "name": "Kolin",
+    "photo":"https://vignette4.wikia.nocookie.net/streetfighter/images/3/30/Kolinclean.png/revision/latest/scale-to-width-down/350?cb=20170715141230",
+    "scores": [4,2,5,4,2,2,2,3,1,3],
+    "gender": "female"
+  },
+   {
+    "name": "Zangief",
+    "photo": "https://vignette2.wikia.nocookie.net/streetfighter/images/4/43/Zangiefclean.png/revision/latest/scale-to-width-down/350?cb=20160604043231",
+    "scores": [5,5,1,4,1,4,5,1,1,4],
+    "gender": "male"
+  },
+   {
+    "name": "Necalli",
+    "photo": "https://vignette4.wikia.nocookie.net/streetfighter/images/2/2b/Necalliclean.png/revision/latest/scale-to-width-down/350?cb=20160604042632",
+    "scores": [5,4,4,3,4,2,3,3,2,1],
+    "gender": "male"
+  },
+   {
+    "name": "Dhalsim",
+    "photo": "https://vignette2.wikia.nocookie.net/streetfighter/images/b/bf/Dhalsimclean.png/revision/latest/scale-to-width-down/350?cb=20160604034907",
+    "scores": [3,2,1,1,2,5,3,3,1,5],
+    "gender": "male"
+  },
+   {
+    "name": "Guile",
+    "photo": "https://vignette2.wikia.nocookie.net/streetfighter/images/4/41/Guileclean.png/revision/latest/scale-to-width-down/267?cb=20160604035239",
+    "scores": [4,3,3,3,2,3,2,5,3,2],
+    "gender": "male"
+  },
+   {
+    "name": "Rashid",
+    "photo": "https://vignette1.wikia.nocookie.net/streetfighter/images/6/60/Rashidclean.png/revision/latest/scale-to-width-down/350?cb=20160604042811",
+    "scores": [2,3,4,3,5,3,2,3,3,3],
+    "gender": "male"
+  },
+   {
+    "name": "Ryu",
+    "photo": "https://vignette4.wikia.nocookie.net/streetfighter/images/0/0a/Ryuclean.png/revision/latest/scale-to-width-down/350?cb=20160604042947",
+    "scores": [4,3,3,2,2,3,2,5,4,2],
+    "gender": "male"
+  }
+]
