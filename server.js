@@ -1,7 +1,6 @@
 //requiring packages & other files
 const express = require ('express');
 const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars')
 var app = express();  
 //body parser
 var PORT = process.env.PORT || 3000;
